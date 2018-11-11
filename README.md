@@ -16,7 +16,9 @@ docker run -p 8001:8001 -v `pwd`:/mnt \
     datasette -p 8001 -h 0.0.0.0 \
     --config allow_download:off \
     /mnt/sqlite/bilancio-dello-stato.db \
-    --metadata /mnt/metadata.json
+    --metadata /mnt/metadata.json \
+    --template-dir /mnt/templates/ \
+    --static static:/mnt/static
 ```
 
 ## Bilancio dello stato
@@ -25,9 +27,16 @@ Tutti i dati sono originati dal [Ministero dell'Economia e Finanze](http://www.m
 
 ### Serie Storiche
 
+#### Disegno Legge di Bilancio Presentato - Serie storica - Spese per Amministrazione Missione Programma Macroaggregato
+
+Prodotto contenente la serie storica dei dati della spesa relativi al Disegno Legge di Bilancio Presentato aggregati per l'esercizio finanziario di riferimento
+
+**sorgente**: https://bdap-opendata.mef.gov.it/content/disegno-legge-di-bilancio-presentato-serie-storica-spese-aggregato-amministrazione-missione
+**CSV**: [`csv/bilancio-dello-stato/serie/dlb.csv`](csv/bilancio-dello-stato/serie/dlb.csv)
+
 #### Legge di Bilancio Pubblicata - Serie storica - Spese per Amministrazione Missione Programma Macroaggregato
 
-Prodotto contenente la serie storica dei dati della Legge di Bilancio Spese aggregati per Amministrazione Missione Programma Macroaggregato
+Prodotto contenente la serie storica dei dati della spesa relativi alla Legge di Bilancio aggregati per Amministrazione Missione Programma Macroaggregato
 
 **sorgente**: https://bdap-opendata.mef.gov.it/content/legge-di-bilancio-cruscotto-spese-amministrazione-missione-programma-macroaggregato
 **CSV**: [`csv/bilancio-dello-stato/serie/lbp.csv`](csv/bilancio-dello-stato/serie/lbp.csv)
@@ -38,6 +47,13 @@ Dati di Saldi relativi al Rendiconto Pubblicato per l'esercizio finanziario di r
 
 **sorgente**: https://bdap-opendata.mef.gov.it/content/rendiconto-pubblicato-serie-storica-saldiold
 **CSV**: [`csv/bilancio-dello-stato/serie/rend_saldi.csv`](csv/bilancio-dello-stato/serie/rend_saldi.csv)
+
+### Bilancio 2019
+
+#### Disegno Legge di Bilancio Presentato Elaborabile Spese Capitolo
+
+**sorgente**: https://bdap-opendata.mef.gov.it/content/2019-disegno-legge-di-bilancio-presentato-elaborabile-spese-capitolo
+**CSV**: [`csv/bilancio-dello-stato/2019/dlb.csv`](csv/bilancio-dello-stato/2019/dlb.csv)
 
 ### Bilancio 2018
 

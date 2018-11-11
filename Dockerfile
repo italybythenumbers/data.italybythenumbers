@@ -9,6 +9,8 @@ RUN pip install https://github.com/simonw/datasette/archive/master.zip
 RUN pip install csvs-to-sqlite
 ADD metadata.json metadata.json
 ADD csv csv
+ADD templates templates
+ADD static static
 RUN csvs-to-sqlite \
   /csv/bilancio-dello-stato \
   /bilancio-dello-stato.db \
@@ -16,4 +18,4 @@ RUN csvs-to-sqlite \
   --replace-tables
 
 EXPOSE 8001
-CMD ["datasette", "serve", "--host", "0.0.0.0", "--port", "8001", "--config", "allow_download:off", "bilancio-dello-stato.db", "--metadata", "/metadata.json"]
+CMD ["datasette", "serve", "--host", "0.0.0.0", "--port", "8001", "--config", "allow_download:off", "bilancio-dello-stato.db", "--metadata", "/metadata.json", "--template-dir", "/templates/", "--static", "static:/static"]
